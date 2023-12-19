@@ -27,7 +27,7 @@ public class BlogService {
     //게시글 조회
     public Article findById(long id) {
         return blogRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found : "+id));
+                .orElseThrow(() -> new IllegalArgumentException("not found : " + id));
     }
 
     //글 삭제
