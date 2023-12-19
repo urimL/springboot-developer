@@ -23,4 +23,9 @@ public class BlogService {
     public List<Article> findAll() {
         return blogRepository.findAll();
     }
+
+    //글 삭제
+    public void delete(long id) {
+        blogRepository.deleteById(id);
+    }
 }
