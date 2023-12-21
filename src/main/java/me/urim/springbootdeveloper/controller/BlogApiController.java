@@ -19,8 +19,8 @@ public class BlogApiController {
     private final BlogService blogService;
 
     @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest req) {
-        Article savedArticle = blogService.save(req);
+    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request) {
+        Article savedArticle = blogService.save(request);
 
         // 요청 자원이 성공적으로 생성되었으며, 저장된 블로그 글 정보를 응답 객체에 담아 전송
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -57,10 +57,12 @@ public class BlogApiController {
     }
 
     @PutMapping("/api/articles/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable long id, @RequestBody UpdateArticleRequest req) {
-        Article updatedArticle = blogService.update(id, req);
+    public ResponseEntity<Article> updateArticle(@PathVariable long id,
+                                                 @RequestBody UpdateArticleRequest request) {
+        Article updatedArticle = blogService.update(id, request);
 
         return ResponseEntity.ok()
                 .body(updatedArticle);
     }
+
 }

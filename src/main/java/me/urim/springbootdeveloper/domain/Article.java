@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Getter
 //기본 생성자 생성
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-
 public class Article {
 
     @Id
@@ -20,14 +19,14 @@ public class Article {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "title", updatable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "content", updatable = false)
+    @Column(name = "content", nullable = false)
     private String content;
 
     @Builder // builder 패턴으로 객체 생성
-    public Article(String title, String content){
+    public Article(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -37,5 +36,4 @@ public class Article {
         this.title = title;
         this.content = content;
     }
-
 }
