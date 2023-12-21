@@ -32,4 +32,10 @@ public class Article {
         this.content = content;
     }
 
+    //글 수정
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
 }

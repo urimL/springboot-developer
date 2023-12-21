@@ -3,8 +3,10 @@ package me.urim.springbootdeveloper.service;
 import lombok.RequiredArgsConstructor;
 import me.urim.springbootdeveloper.domain.Article;
 import me.urim.springbootdeveloper.dto.AddArticleRequest;
+import me.urim.springbootdeveloper.dto.UpdateArticleRequest;
 import me.urim.springbootdeveloper.repository.BlogRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,4 +36,18 @@ public class BlogService {
     public void delete(long id) {
         blogRepository.deleteById(id);
     }
+
+    //글 수정
+    //@Transactional : 매칭한 메서드를 하나의 트랜잭션으로 묶는 역할
+    //이 메서드는 엔티티의 필드 값이 바뀌면 에러가 발생해도 제대로 된 값 수정 보장받음
+    @Transactional
+    public Article update(long id, UpdateArticleRequest req) {
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found: "+id));
+
+        article.update(req.getTitle(),req.getContent());
+
+        return article;
+    }
+
 }
