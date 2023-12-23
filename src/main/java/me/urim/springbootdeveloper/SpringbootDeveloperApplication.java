@@ -2,7 +2,10 @@ package me.urim.springbootdeveloper;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+//create_at, update_at 자동 업데이트
+@EnableJpaAuditing
 @SpringBootApplication
 public class SpringbootDeveloperApplication {
 
